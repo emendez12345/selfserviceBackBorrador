@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\archivosPdfController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class enviarArchivoController extends Controller
 {
@@ -39,7 +40,36 @@ class enviarArchivoController extends Controller
                 $urlArchivos,
             ]
         );
+
+        // this.conexionFtp();
+
         return $request;
     }
+    public function conexionFtp()
+    {
+        /*
+        Json de dato datos_integracion de la tabla tiendas requerido de rutas para las integraciones:
+        {
+        "usuarioFTP": "*****",
+        "contrasenaFTP": "*****",
+        "rutaProductos": "/PruebasQA/Productos/",
+        "rutaStock":"/PruebasQA/Productos/Stock/"},
+        "rutaFotos":"/PruebasQA/Productos/Fotos/"}
+         */
+        // try {
+        //     $ftp = Storage::createFtpDriver([
+        //         'driver' => 'ftp',
+        //         'host' => env('FTP_HOST'),
+        //         'username' => $usuario,
+        //         'password' => $contrasena,
+        //         'port' => env('FTP_PORT'),
+        //     ]);
+        //     Storage::disk('publicIMG')->put($name, $contents);
+        //     return $ftp;
+        // } catch (\Exception$e) {
+        //     return false;
+        // }
+    }
+
     
 }
