@@ -25,6 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/obtenerpdf',[archivosPdfController::class, 'subir']);
 Route::post('/subirpdf',[enviarArchivoController::class, 'enviarArchivos']);
+Route::post('/subirexcel',[enviarArchivoController::class, 'enviarExcel']);
 Route::get('/inscripciones',[InscripcionController::class, 'index']);
 Route::get('/inscripciones/{id}',[InscripcionController::class, 'show']);
 Route::post('/inscripciones',[InscripcionController::class, 'create']);

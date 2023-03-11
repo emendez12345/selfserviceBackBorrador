@@ -14,4 +14,12 @@ class archivosPdfController extends Controller
         return env('APP_URL').'/'.$path.'/'.$fileName;
 
     }
+
+    public function excel($name, $path, $file){
+        $extension = $file->extension();
+        $fileName='portal'.$name.'.'.$extension;
+        $file->move(public_path($path), $fileName);
+        return env('APP_URL').'/'.$path.'/'.$fileName;
+
+    }
 }

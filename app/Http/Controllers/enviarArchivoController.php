@@ -25,4 +25,21 @@ class enviarArchivoController extends Controller
 
         return $request;
     }
+
+    public function enviarExcel(Request $request){
+
+        $subirArchivos = new archivosPdfController();
+        print_r($subirArchivos);
+
+        $urlArchivos = $subirArchivos->excel($request->nombre, 'documentos_excel', $request->file('File'));
+
+        DB::insert(
+            'insert into excel (archivo) values (?)',
+            [
+                $urlArchivos,
+            ]
+        );
+        return $request;
+    }
+    
 }
