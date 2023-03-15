@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\archivosPdfController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Arr;
 
 class enviarArchivoController extends Controller
 {
@@ -69,6 +70,18 @@ class enviarArchivoController extends Controller
         // } catch (\Exception$e) {
         //     return false;
         // }
+    }
+    public function conexionpostgresql(Request $request){
+
+        $bancos=DB::select('select sociedad,banco from banco_occidente');
+        $facturas=DB::select('select numero_factura,valor from banco_occidente where numero_identificacion=?',[$request->numero_identificacion]);
+        foreach ($bancos as $key => $banco) {
+            $bancos[$key]->sociedad;
+        }
+        $output[] = Arr::add((array) $bancos[$key], 'facturas', $facturas);
+
+        return response()->json($output, 200);
+
     }
 
     

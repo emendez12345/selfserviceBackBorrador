@@ -23,6 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/prueba',[enviarArchivoController::class, 'conexionpostgresql']);
 Route::get('/obtenerpdf',[archivosPdfController::class, 'subir']);
 Route::post('/subirpdf',[enviarArchivoController::class, 'enviarArchivos']);
 Route::post('/subirexcel',[enviarArchivoController::class, 'enviarExcel']);
